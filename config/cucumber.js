@@ -23,7 +23,7 @@ module.exports={
             "json:test-results/cucumber-report.json",
             "rerun:@rerun.txt"
         ],
-        parallel : 2
+        
     },
     rerun : {
         tags: process.env.npm_config_TAGS || "",
