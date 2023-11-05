@@ -47,8 +47,7 @@ module.exports={
             "html:test-results/cucumber-report.html",
             "json:test-results/cucumber-report.json",
             "rerun:@rerun.txt"
-        ],
-        parallel : 2
+        ]
     },
 
 
