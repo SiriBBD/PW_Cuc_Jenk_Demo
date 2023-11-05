@@ -2,7 +2,7 @@ pipeline {
   agent { 
     docker { 
       image 'jenkins/jenkins:lts'
-      args '-v C:\\Users\\bbdnet10214\\Documents\\PW_Cuc_Jenk_Demo:C:/ProgramData/Jenkins/.jenkins/workspace/PlayWright_Demo/'
+      args '-v C:\\Users\\bbdnet10214\\Documents\\PW_Cuc_Jenk_Demo:C:/ProgramData/Jenkins/.jenkins/workspace/PlayWright_Demo'
     } 
   }
   stages {
@@ -21,17 +21,25 @@ pipeline {
     }
     stage('test') {
       steps {
-        sh '''
-          npm run test
-          npm run report
-        '''
+        script {
+            docker.image('jenkins/jenkins:lts').inside("-v C:\\Users\\bbdnet10214\\Documents\\PW_Cuc_Jenk_Demo:C:/ProgramData/Jenkins/.jenkins/workspace/PlayWright_Demo") {
+                sh '''
+                  npm run build
+                  npm run test
+                  npm run report
+                '''
+            }
+        }
       }
+
       post {
         success {
           archiveArtifacts(artifacts: 'homepage-*.png', followSymlinks: false)
           sh 'rm -rf *.png'
         }
       }
+       
+      
     }
   }
 }
