@@ -9,8 +9,15 @@ pipeline {
     stage('install playwright') {
       steps {
         sh '''
+          npm install
+          npm run update
           npm i -D @playwright/test
           npx playwright install
+          npm install @cucumber/cucumber -D
+          npm install ts-node -D
+          npm install multiple-cucumber-html-reporter --save-dev
+          npm install fs-extra -D
+                    
         '''
       }
     }
