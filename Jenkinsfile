@@ -1,8 +1,7 @@
 pipeline {
   agent { 
     docker { 
-      //image 'jenkins/jenkins:lts'
-      //args '-v C:\\Users\\bbdnet10214\\Documents\\PW_Cuc_Jenk_Demo:C:/ProgramData/Jenkins/.jenkins/workspace/PlayWright_Demo/'
+      image 'jenkins/jenkins:latest'      
     } 
   }
   stages {
